@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.med.voll.api.paciente.DadosCadastroPaciente;
 
 @RestController
-@RequestMapping("/medicos")
+@RequestMapping("/pacientes")
 public class PacienteController {
 	
 	@PostMapping

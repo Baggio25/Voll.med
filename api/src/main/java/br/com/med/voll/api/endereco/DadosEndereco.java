@@ -1,7 +1,7 @@
 package br.com.med.voll.api.endereco;
 
 public record DadosEndereco(
-		String logadouro,
+		String logradouro,
 		String bairro,
 		String cep,
 		String cidade,
