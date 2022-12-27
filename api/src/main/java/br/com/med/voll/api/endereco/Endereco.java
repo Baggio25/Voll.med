@@ -1,5 +1,6 @@
 package br.com.med.voll.api.endereco;
 
+import br.com.med.voll.api.medico.DadosAtualizacaoMedico;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,5 +30,30 @@ public class Endereco {
 		this.uf = endereco.uf();
 		this.complemento = endereco.complemento();
 		this.numero = endereco.numero();
+	}
+
+	public void atualizarInformacoes(DadosEndereco dadosEndereco) {
+		if(dadosEndereco.logradouro() != null) {
+			this.logradouro = dadosEndereco.logradouro();
+		}
+		if(dadosEndereco.bairro() != null) {
+			this.bairro = dadosEndereco.bairro();
+		}
+		if(dadosEndereco.cep() != null) {
+			this.cep = dadosEndereco.cep();
+		}
+		if(dadosEndereco.cidade() != null) {
+			this.cidade = dadosEndereco.cidade();
+		}
+		if(dadosEndereco.uf() != null) {
+			this.uf = dadosEndereco.uf();
+		}
+		if(dadosEndereco.complemento() != null) {
+			this.complemento = dadosEndereco.complemento();
+		}
+		if(dadosEndereco.numero() != null) {
+			this.numero = dadosEndereco.numero();
+		}
+
 	}
 }
