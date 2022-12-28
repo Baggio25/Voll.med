@@ -65,7 +65,9 @@ public class Medico {
 		if(dadosAtualizacaoMedico.dadosEndereco() != null) {
 			this.endereco.atualizarInformacoes(dadosAtualizacaoMedico.dadosEndereco());
 		}
-		this.ativo = dadosAtualizacaoMedico.ativo();
+		if(dadosAtualizacaoMedico.ativo() != null) {
+			this.ativo = dadosAtualizacaoMedico.ativo();
+		}
 	}
 
 	public void inativar() {
