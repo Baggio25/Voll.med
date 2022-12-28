@@ -7,6 +7,7 @@ public record DadosAtualizacaoMedico(
 
         String nome,
         String telefone,
+        Boolean ativo,
         DadosEndereco dadosEndereco
 ) {
 }
