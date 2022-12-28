@@ -5,10 +5,11 @@ import jakarta.validation.Valid;
 
 public record DadosAtualizacaoPaciente(
 
-        Long id,
-        String nome,
-        String telefone,
+       Long id,
+       String nome,
+       String telefone,
+       Boolean ativo,
        @Valid
-        DadosEndereco dadosEndereco
+       DadosEndereco dadosEndereco
 ) {
 }

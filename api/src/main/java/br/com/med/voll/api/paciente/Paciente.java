@@ -40,14 +40,21 @@ public class Paciente {
     }
 
     public void atualizarInformacoes(DadosAtualizacaoPaciente dados) {
-        if (dados.nome() != null)
+        if (dados.nome() != null) {
             this.nome = dados.nome();
+        }
 
-        if (dados.telefone() != null)
+        if (dados.telefone() != null) {
             this.telefone = dados.telefone();
+        }
 
-        if (dados.dadosEndereco() != null)
+        if (dados.dadosEndereco() != null) {
             endereco.atualizarInformacoes(dados.dadosEndereco());
+        }
+
+        if(dados.ativo() != null) {
+            this.ativo = dados.ativo();
+        }
     }
 
     public void inativar() {

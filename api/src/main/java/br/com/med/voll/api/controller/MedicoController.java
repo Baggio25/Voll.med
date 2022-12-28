@@ -35,6 +35,7 @@ public class MedicoController {
 	}
 
 	@PostMapping
+	@Transactional
 	public ResponseEntity cadastrar(
 			@RequestBody @Valid DadosCadastroMedico dadosCadastroMedico,
 			UriComponentsBuilder uriComponentsBuilder) {
