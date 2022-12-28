@@ -1,6 +1,5 @@
-package br.com.med.voll.api.endereco;
+package br.com.med.voll.api.domain.endereco;
 
-import br.com.med.voll.api.medico.DadosAtualizacaoMedico;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

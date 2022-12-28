@@ -1,7 +1,9 @@
 package br.com.med.voll.api.controller;
 
-import br.com.med.voll.api.medico.Medico;
-import br.com.med.voll.api.paciente.*;
+import br.com.med.voll.api.domain.paciente.DadosListagemPaciente;
+import br.com.med.voll.api.domain.paciente.Paciente;
+import br.com.med.voll.api.domain.paciente.PacienteRepository;
+import br.com.med.voll.api.domain.paciente.*;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

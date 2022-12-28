@@ -1,6 +1,9 @@
 package br.com.med.voll.api.controller;
 
-import br.com.med.voll.api.medico.*;
+import br.com.med.voll.api.domain.medico.DadosListagemMedico;
+import br.com.med.voll.api.domain.medico.Medico;
+import br.com.med.voll.api.domain.medico.MedicoRepository;
+import br.com.med.voll.api.domain.medico.*;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +13,6 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/medicos")
