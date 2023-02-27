@@ -19,18 +19,30 @@ public class AgendaConsultaService {
     @Autowired
     private PacienteRepository pacienteRepository;
 
-
     public void agendar(DadosAgendamentoConsulta dados) {
-        validaIntegridadeDosDados(dados);
+        validaIntegridadeDosDadosAgendamento(dados);
 
         var medico = escolherMedico(dados);
         var paciente = pacienteRepository.findById(dados.idPaciente()).get();
-        var consulta = new Consulta(null, medico, paciente, dados.data());
+        var consulta = new Consulta(null, medico, paciente, dados.data(), null);
 
         consultaRepository.save(consulta);
     }
 
-    private void validaIntegridadeDosDados(DadosAgendamentoConsulta dados) {
+    public void cancelar(DadosCancelamentoConsulta dados) {
+        validaIntegridadeDosDadosCancelamento(dados);
+
+        var consulta = consultaRepository.getReferenceById(dados.idConsulta());
+        consulta.cancelar(dados.motivo());
+    }
+
+    private void validaIntegridadeDosDadosCancelamento(DadosCancelamentoConsulta dados) {
+        if(!consultaRepository.existsById(dados.idConsulta())){
+            throw new ValidacaoException("Id da consulta informado não existe.");
+        }
+    }
+
+    private void validaIntegridadeDosDadosAgendamento(DadosAgendamentoConsulta dados) {
         if(!pacienteRepository.existsById(dados.idPaciente())) {
             throw new ValidacaoException("Id do paciente informado não existe.");
         }
