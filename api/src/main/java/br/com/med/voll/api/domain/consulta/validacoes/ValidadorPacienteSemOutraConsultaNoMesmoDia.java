@@ -4,8 +4,10 @@ import br.com.med.voll.api.domain.ValidacaoException;
 import br.com.med.voll.api.domain.consulta.ConsultaRepository;
 import br.com.med.voll.api.domain.consulta.DadosAgendamentoConsulta;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-public class ValidadorPacienteSemOutraConsultaNoMesmoDia {
+@Component
+public class ValidadorPacienteSemOutraConsultaNoMesmoDia implements  ValidadorAgendamentoConsultas{
 
     @Autowired
     private ConsultaRepository consultaRepository;
