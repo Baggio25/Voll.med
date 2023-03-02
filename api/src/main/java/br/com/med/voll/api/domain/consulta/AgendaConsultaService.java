@@ -20,7 +20,13 @@ public class AgendaConsultaService {
     private PacienteRepository pacienteRepository;
 
     public void agendar(DadosAgendamentoConsulta dados) {
-        validaIntegridadeDosDadosAgendamento(dados);
+        if(!pacienteRepository.existsById(dados.idPaciente())) {
+            throw new ValidacaoException("Id do paciente informado não existe.");
+        }
+
+        if(dados.idMedico() != null && !medicoRepository.existsById(dados.idMedico())){
+            throw new ValidacaoException("Id do medico informado não existe.");
+        }
 
         var medico = escolherMedico(dados);
         var paciente = pacienteRepository.findById(dados.idPaciente()).get();
@@ -30,26 +36,12 @@ public class AgendaConsultaService {
     }
 
     public void cancelar(DadosCancelamentoConsulta dados) {
-        validaIntegridadeDosDadosCancelamento(dados);
-
-        var consulta = consultaRepository.getReferenceById(dados.idConsulta());
-        consulta.cancelar(dados.motivo());
-    }
-
-    private void validaIntegridadeDosDadosCancelamento(DadosCancelamentoConsulta dados) {
         if(!consultaRepository.existsById(dados.idConsulta())){
             throw new ValidacaoException("Id da consulta informado não existe.");
         }
-    }
 
-    private void validaIntegridadeDosDadosAgendamento(DadosAgendamentoConsulta dados) {
-        if(!pacienteRepository.existsById(dados.idPaciente())) {
-            throw new ValidacaoException("Id do paciente informado não existe.");
-        }
-
-        if(dados.idMedico() != null && !medicoRepository.existsById(dados.idMedico())){
-            throw new ValidacaoException("Id do medico informado não existe.");
-        }
+        var consulta = consultaRepository.getReferenceById(dados.idConsulta());
+        consulta.cancelar(dados.motivo());
     }
 
     private Medico escolherMedico(DadosAgendamentoConsulta dados) {
